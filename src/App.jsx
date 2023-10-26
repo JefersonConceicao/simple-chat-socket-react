@@ -19,11 +19,9 @@ export function App() {
     setMessages(data);
   });
 
-  useEffect(() => {
-    socket.on('send_message', data => {
-      console.log(data);
-    });
-  }, []);
+  socket.on("send_message", (data) => {
+    setMessages([...messages, data]);
+  });
 
   return (
     <>
